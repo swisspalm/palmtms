@@ -9,7 +9,7 @@ import LoginPage from './pages/LoginPage';
 import Page404 from './pages/Page404';
 import ProductsPage from './pages/ProductsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
-import Plaid from './pages/Plaid';
+import PlaidPage from './pages/PlaidPage';
 
 // ----------------------------------------------------------------------
 
@@ -24,7 +24,7 @@ export default function Router() {
         { path: 'user', element: <UserPage /> },
         { path: 'products', element: <ProductsPage /> },
         { path: 'blog', element: <BlogPage /> },
-        { path: 'plaid', element: <Plaid /> },
+        { path: 'plaid', element: <PlaidPage /> },
       ],
     },
     {

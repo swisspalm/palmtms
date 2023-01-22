@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { Divider, Flex, Heading, View } from '@aws-amplify/ui-react';
 import Accounts from '../components/Accounts';
 import Transactions from '../components/Transactions';
+import Plaid from 'src/components/Plaid';
 
 // ----------------------------------------------------------------------
 
@@ -24,7 +25,7 @@ const StyledContent = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
-export default function Plaid() {
+export default function PlaidPage() {
 
   const { id } = useParams();
 
@@ -49,6 +50,8 @@ export default function Plaid() {
           <Typography variant="h3" paragraph>
             Connect Plaid
           </Typography>
+          <Plaid />
+
 
           <Typography sx={{ color: 'text.secondary' }}>
             Connect your bank
