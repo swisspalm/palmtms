@@ -1,42 +1,19 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Authenticator } from "@aws-amplify/ui-react";
-import Protected from './pages/Protected';
-import Login from './pages/Login';
-import Institution from './pages/Institution';
-import Layout from './components/Layout';
-import RequireAuth from './RequireAuth';
+// routes
+import Router from './routes';
+// theme
+import ThemeProvider from './theme';
+// components
+import ScrollToTop from './components/scroll-to-top';
+import { StyledChart } from './components/chart';
 
-import './App.css';
+// ----------------------------------------------------------------------
 
-
-function App() {
+export default function App() {
   return (
-    <Authenticator.Provider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route
-              index
-              element={
-                <RequireAuth>
-                  <Protected />
-                </RequireAuth>
-              }
-            />
-            <Route
-              path="/institution/:id"
-              element={
-                <RequireAuth>
-                  <Institution />
-                </RequireAuth>
-              }
-            />
-            <Route path="/login" element={<Login />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </Authenticator.Provider>
+    <ThemeProvider>
+      <ScrollToTop />
+      <StyledChart />
+      <Router />
+    </ThemeProvider>
   );
 }
-
-export default App;
