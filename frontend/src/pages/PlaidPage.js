@@ -5,13 +5,15 @@ import { styled } from '@mui/material/styles';
 import { Button, Typography, Container, Box } from '@mui/material';
 
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
-import { Divider, Flex, Heading, View } from '@aws-amplify/ui-react';
+import { useAuthenticator, Divider, Flex, Heading, View } from '@aws-amplify/ui-react';
 import Accounts from '../components/Accounts';
 import Transactions from '../components/Transactions';
 import Plaid from 'src/components/Plaid';
 
-import { useAuthenticator } from '@aws-amplify/ui-react';
+import { useState, useEffect } from 'react';
+import { API, graphqlOperation, Logger } from 'aws-amplify';
+import { getItems as GetItems } from '../graphql/queries';
+import Institutions from '../components/Institutions';
 
 
 // ----------------------------------------------------------------------
@@ -28,11 +30,15 @@ const StyledContent = styled('div')(({ theme }) => ({
 
 // ----------------------------------------------------------------------
 
+const logger = new Logger("Protected");
+
 export default function PlaidPage() {
 
   const { id } = useParams();
 
   const [accountMap, setAccountMap] = useState({});
+
+  const [items, setItems] = useState([]);
 
   const updateAccounts = (accounts) => {
     const accountMap = accounts.reduce((acc, cur, idx) => {
@@ -40,13 +46,27 @@ export default function PlaidPage() {
       return acc;
     }, {});
     setAccountMap(accountMap);
-  }
+  };
 
   const { route, signOut, user } = useAuthenticator((context) => [
     context.route,
     context.signOut,
     context.user
   ]);
+
+  const getItems = async () => {
+    try {
+      const res = await API.graphql(graphqlOperation(GetItems));
+      logger.info(res);
+      setItems(res.data.getItems.items);
+    } catch (err) {
+      logger.error('unable to get items', err);
+    }
+  };
+  
+  useEffect(() => {
+    getItems();
+  }, []);
 
   return (
     <>
@@ -61,34 +81,25 @@ export default function PlaidPage() {
 
           <Typography variant="h3" paragraph>
             Connect Plaid
-          </Typography>
-          <Plaid />
-
-
-          <Typography sx={{ color: 'text.secondary' }}>
-            Connect your bank
-          </Typography>
-          <Flex direction="column">
-            <Divider/>
-            <Flex direction="row">
-              <Heading level={5}>Institution</Heading>
+            <Flex direction="column">
+              <Plaid getItems={getItems}/>
+              {(items && items.length) ? (
+                <View>
+                  <Heading>Institutions</Heading>
+                  <Institutions institutions={items}/>
+                </View>
+              ) : (<div/>)
+              }
             </Flex>
-            <Flex direction="row">
-              <View>
-                <Heading level={6}>Accounts</Heading>
-                <Accounts id={id} updateAccounts={updateAccounts}/>
-              </View>
-              <View>
-                <Heading level={6}>Transactions</Heading>
-                <Transactions id={id} accounts={accountMap}/>
-              </View>
-            </Flex>
-          </Flex>
+          </Typography>
         </StyledContent>
       </Container>
     </>
   );
 }
+
+
+
 
 
 

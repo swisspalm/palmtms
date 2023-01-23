@@ -15,6 +15,7 @@ import PlaidPage from './pages/PlaidPage';
 
 export default function Router() {
   const routes = useRoutes([
+    
     {
       path: '/dashboard',
       element: <DashboardLayout />,
@@ -47,3 +48,4 @@ export default function Router() {
 
   return routes;
 }
+
