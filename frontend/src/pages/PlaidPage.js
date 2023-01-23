@@ -15,6 +15,7 @@ import { API, graphqlOperation, Logger } from 'aws-amplify';
 import { getItems as GetItems } from '../graphql/queries';
 import Institutions from '../components/Institutions';
 
+import { ActionCard } from '../ui-components';
 
 // ----------------------------------------------------------------------
 
@@ -76,6 +77,8 @@ export default function PlaidPage() {
 
       <Container>
 
+
+        <ActionCard />
         <StyledContent sx={{ textAlign: 'center', alignItems: 'center' }}>
           {route === 'authenticated' ? `Welcome ${user.signInUserSession.idToken.payload.email}` : 'Please Login!'}
 
