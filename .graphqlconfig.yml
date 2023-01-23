@@ -1,0 +1,18 @@
+projects:
+  Plaid GraphQL API - dev:
+    schemaPath: frontend/frontend/src/graphql/schema.json
+    includes:
+      - src/graphql/**/*.js
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: javascript
+        generatedFileName: ''
+        docsFilePath: src/graphql
+        region: eu-north-1
+        apiId: 6nasxokvl5ai3b4srv2wnp6fsm
+        maxDepth: 2
+extensions:
+  amplify:
+    version: 3

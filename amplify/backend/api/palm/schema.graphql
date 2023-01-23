@@ -1,0 +1,6 @@
+type Institution @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  updated_at: String
+  number_accounts: String
+}

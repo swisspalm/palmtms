@@ -7,55 +7,62 @@
 /* eslint-disable */
 import * as React from "react";
 import { getOverrideProps } from "@aws-amplify/ui-react/internal";
-import { Badge, Flex, Text } from "@aws-amplify/ui-react";
-export default function ItemCard(props) {
-  const { institution, overrides, ...rest } = props;
+import { Flex, Image, Text } from "@aws-amplify/ui-react";
+export default function StandardCard(props) {
+  const { overrides, ...rest } = props;
   return (
     <Flex
-      gap="16px"
+      gap="0"
       direction="column"
       width="320px"
       height="unset"
-      justifyContent="flex-start"
+      justifyContent="center"
       alignItems="flex-start"
       position="relative"
-      padding="16px 16px 16px 16px"
+      padding="0px 0px 0px 0px"
       backgroundColor="rgba(255,255,255,1)"
-      {...getOverrideProps(overrides, "ItemCard")}
+      {...getOverrideProps(overrides, "StandardCard")}
       {...rest}
     >
-      <Badge
-        gap="0"
-        shrink="0"
-        size="small"
-        variation="default"
-        children="New"
-        {...getOverrideProps(overrides, "Badge")}
-      ></Badge>
-      <Flex
-        gap="0"
-        direction="row"
+      <Image
         width="unset"
-        height="unset"
-        justifyContent="space-between"
-        alignItems="center"
+        height="160px"
+        display="block"
+        gap="unset"
+        alignItems="unset"
+        justifyContent="unset"
         shrink="0"
         alignSelf="stretch"
         position="relative"
         padding="0px 0px 0px 0px"
-        {...getOverrideProps(overrides, "Frame 417")}
+        objectFit="cover"
+        {...getOverrideProps(overrides, "image")}
+      ></Image>
+      <Flex
+        gap="16px"
+        direction="column"
+        width="unset"
+        height="unset"
+        justifyContent="flex-start"
+        alignItems="flex-start"
+        shrink="0"
+        alignSelf="stretch"
+        position="relative"
+        padding="16px 16px 16px 16px"
+        {...getOverrideProps(overrides, "Card Area")}
       >
         <Flex
-          gap="0"
+          gap="8px"
           direction="column"
           width="unset"
           height="unset"
           justifyContent="flex-start"
           alignItems="flex-start"
           shrink="0"
+          alignSelf="stretch"
           position="relative"
           padding="0px 0px 0px 0px"
-          {...getOverrideProps(overrides, "Product Title")}
+          {...getOverrideProps(overrides, "Text Group")}
         >
           <Text
             fontFamily="Inter"
@@ -72,17 +79,18 @@ export default function ItemCard(props) {
             gap="unset"
             alignItems="unset"
             shrink="0"
+            alignSelf="stretch"
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children={institution?.name}
-            {...getOverrideProps(overrides, "T-Shirt")}
+            children="$99 USD"
+            {...getOverrideProps(overrides, "$99 USD")}
           ></Text>
           <Text
             fontFamily="Inter"
             fontSize="16px"
             fontWeight="400"
-            color="rgba(48,64,80,1)"
+            color="rgba(13,26,38,1)"
             lineHeight="24px"
             textAlign="left"
             display="block"
@@ -94,34 +102,36 @@ export default function ItemCard(props) {
             gap="unset"
             alignItems="unset"
             shrink="0"
+            alignSelf="stretch"
             position="relative"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
-            children={institution?.updated_at}
-            {...getOverrideProps(overrides, "Classic Long Sleeve")}
+            children="4bds 3 ba 2,530 sqft - Active"
+            {...getOverrideProps(overrides, "4bds 3 ba 2,530 sqft - Active")}
+          ></Text>
+          <Text
+            fontFamily="Inter"
+            fontSize="14px"
+            fontWeight="400"
+            color="rgba(48,64,80,1)"
+            lineHeight="24px"
+            textAlign="left"
+            display="block"
+            direction="column"
+            justifyContent="unset"
+            width="unset"
+            height="unset"
+            gap="unset"
+            alignItems="unset"
+            shrink="0"
+            alignSelf="stretch"
+            position="relative"
+            padding="0px 0px 0px 0px"
+            whiteSpace="pre-wrap"
+            children="832 34th Ave, Seattle, WA 98122"
+            {...getOverrideProps(overrides, "832 34th Ave, Seattle, WA 98122")}
           ></Text>
         </Flex>
-        <Text
-          fontFamily="Inter"
-          fontSize="16px"
-          fontWeight="800"
-          color="rgba(13,26,38,1)"
-          lineHeight="20px"
-          textAlign="right"
-          display="block"
-          direction="column"
-          justifyContent="unset"
-          width="unset"
-          height="unset"
-          gap="unset"
-          alignItems="unset"
-          shrink="0"
-          position="relative"
-          padding="0px 0px 0px 0px"
-          whiteSpace="pre-wrap"
-          children={institution?.number_accounts}
-          {...getOverrideProps(overrides, "$99")}
-        ></Text>
       </Flex>
     </Flex>
   );
