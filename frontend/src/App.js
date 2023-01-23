@@ -15,9 +15,11 @@ export default function App() {
   return (
   <Authenticator.Provider>
    <ThemeProvider>
-      <ScrollToTop />
-      <StyledChart />
-      <Router />
+      <RequireAuth>
+        <ScrollToTop />
+        <StyledChart />
+        <Router />
+      </RequireAuth>
     </ThemeProvider>
   </Authenticator.Provider>
   );

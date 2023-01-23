@@ -58,9 +58,7 @@ export default function PlaidPage() {
 
         <StyledContent sx={{ textAlign: 'center', alignItems: 'center' }}>
           {route === 'authenticated' ? `Welcome ${user.signInUserSession.idToken.payload.email}` : 'Please Login!'}
-          <Typography sx={{ color: 'text.secondary' }}>
-            Welcome ${user.signInUserSession.idToken.payload.email}          
-          </Typography>
+
           <Typography variant="h3" paragraph>
             Connect Plaid
           </Typography>

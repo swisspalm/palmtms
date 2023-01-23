@@ -7,6 +7,7 @@ const logger = new Logger("Plaid");
 
 const apiName = "plaidapi";
 
+
 export default function Plaid({ getItems }) {
   const [connecting, setConnecting] = useState(false);
   const [token, setToken] = useState(null);
