@@ -11,6 +11,9 @@ import Accounts from '../components/Accounts';
 import Transactions from '../components/Transactions';
 import Plaid from 'src/components/Plaid';
 
+import { useAuthenticator } from '@aws-amplify/ui-react';
+
+
 // ----------------------------------------------------------------------
 
 const StyledContent = styled('div')(({ theme }) => ({
@@ -39,6 +42,12 @@ export default function PlaidPage() {
     setAccountMap(accountMap);
   }
 
+  const { route, signOut, user } = useAuthenticator((context) => [
+    context.route,
+    context.signOut,
+    context.user
+  ]);
+
   return (
     <>
       <Helmet>
@@ -46,7 +55,12 @@ export default function PlaidPage() {
       </Helmet>
 
       <Container>
+
         <StyledContent sx={{ textAlign: 'center', alignItems: 'center' }}>
+          {route === 'authenticated' ? `Welcome ${user.signInUserSession.idToken.payload.email}` : 'Please Login!'}
+          <Typography sx={{ color: 'text.secondary' }}>
+            Welcome ${user.signInUserSession.idToken.payload.email}          
+          </Typography>
           <Typography variant="h3" paragraph>
             Connect Plaid
           </Typography>

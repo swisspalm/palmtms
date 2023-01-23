@@ -88,6 +88,7 @@ export default function LoginPage() {
             </Typography>
             <img src="/assets/illustrations/illustration_login.png" alt="login" />
           </StyledSection>
+          
     <View className="auth-wrapper">
       <Authenticator components={components}/>
     </View>

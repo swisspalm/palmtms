@@ -8,7 +8,7 @@ import * as serviceWorker from './serviceWorker';
 import reportWebVitals from './reportWebVitals';
 
 
-import { Amplify, Auth } from "aws-amplify";
+import { Amplify, Auth, Logger } from "aws-amplify";
 
 import '@aws-amplify/ui-react/styles.css';
 
