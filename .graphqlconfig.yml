@@ -1,6 +1,6 @@
 projects:
   Plaid GraphQL API - dev:
-    schemaPath: frontend/frontend/src/graphql/schema.json
+    schemaPath: frontend/src/graphql/schema.json
     includes:
       - src/graphql/**/*.js
     excludes:
