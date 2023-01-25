@@ -8,6 +8,7 @@ export { default as MarketingFooter } from "./MarketingFooter";
 export { default as SideBar } from "./SideBar";
 export { default as Features4x1 } from "./Features4x1";
 export { default as NavBar } from "./NavBar";
+export { default as InstitutionCollection } from "./InstitutionCollection";
 export { default as HeroLayout4 } from "./HeroLayout4";
 export { default as ProfileCard } from "./ProfileCard";
 export { default as Features2x3 } from "./Features2x3";

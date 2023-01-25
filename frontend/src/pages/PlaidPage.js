@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { styled } from '@mui/material/styles';
-import { Button, Typography, Container, Box } from '@mui/material';
+import { Button, Typography, Container, Box, ListItemButton } from '@mui/material';
 
 import { useParams } from 'react-router-dom';
 import { useAuthenticator, Divider, Flex, Heading, View } from '@aws-amplify/ui-react';
@@ -93,6 +93,10 @@ export default function PlaidPage() {
                 </View>
               ) : (<div/>)
               }
+                  <ItemCard
+                    overrides={{"T-Shirt": { children: "Test" } }}
+                  />
+
             </Flex>
           </Typography>
         </StyledContent>
